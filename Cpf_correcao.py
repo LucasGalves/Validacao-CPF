@@ -125,21 +125,6 @@ def testando2(cpf):
         if cpf_temporario[-2] == cpf_check1 and cpf_temporario[-1] == cpf_check2:
             print(f"                Ou: {pontuandoCPF(cpf_temporario)}")
 
-
-# -------------------------- Falsificacao -------------------------- #
-def falsificacao():
-    import random
-    
-    # Gera numeros aleatorios:
-    cpf_f = list(str(f"{int(random.uniform(11111111, 99999999))}9"))
-    cpf_f.append(validacao(cpf_f)) #validacao 1
-    cpf_f.append(validacao(cpf_f)) #validacao 2
-
-    for i in range(len(cpf_f)):
-        cpf_f[i] = str(cpf_f[i])
-
-    print(f"{pontuandoCPF(cpf_f)}")
-
 # -------------------------- Main -------------------------- #
 def main():
     cpf = ""
@@ -147,24 +132,17 @@ def main():
     while True:
         cpf = input("Digite seu CPF => ")
 
-        # CPF gerado aleatoriamente:
-        if cpf == "0":
-            print("Modo CPF aleatorio: ", end="")
-            falsificacao()
+        # Padroniza o input
+        cpf = cpf.replace(".", "").replace(",", "").replace("-", "").replace(" ", "")
 
-        # Verificacao do CPF
-        else:
-            # Verifica casto todos os digitos sejam numeros e nao caracteres:
-            cpf = cpf.replace(".", "").replace(",", "").replace("-", "").replace(" ", "")
-
-            if len(cpf) == 11:
-                try:
-                    verifica(list(cpf))
-                except:
-                    print("CPF ERRO! Tente novamente\n")
-
-            else:
+        if len(cpf) == 11:
+            try:
+                verifica(list(cpf))
+            except:
                 print("CPF ERRO! Tente novamente\n")
+
+        else:
+            print("CPF ERRO! Tente novamente\n")
 
 
 #=======================================================================================#
