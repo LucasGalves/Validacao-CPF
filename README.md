@@ -2,26 +2,27 @@ Não sei muito bem o que colocar em um arquivo README. Perdoe se ele acabar fica
 
 A criação desse programa veio de um desavio que meu professor de programação da faculdade de Ciência da Computação me propoz. Como envolve bastante manipulação de lista e MUUUITA matemática, 
 foi um desafio divertido de fazer. Indo atrás de como é gerado um, me deparei no site [[https://atitudereflexiva.wordpress.com/2021/05/05/entenda-como-e-gerado-o-numero-do-cpf/]], onde explica
-perfeitamente a matemágica por trás da criação. Um resumo:
+perfeitamente a matemágica por trás da criação. \
+Um resumo:
 
 xxx.xxx.xxR-YZ
-Os números nas posições 'x' são gerados aleatóriamente. Provávelmente deve ter uma lógica por trás das escolhas de certos padrões, mas eles em sí podem ser aleatórios.
-O número 'R' varia conforme a região que foi criado. Se você nasceu no Paraná ou em Santa Catarina, seu 9° dígito será '9'. A lista das regiões está no link acima.
-A magia acontece nos digitos Y e Z. Eles são números "verificadores", criados a partir de uma conta maluca.
-  -> Primeiro é feito a soma: (primeiro digito * 10) + (segundo digito * 9) + (terceiro digito * 8) + ... + (nono dígito * 2);
-  -> O resultado dessa soma é dividida por 11 e pego o resto resultante da divisão. Se for igual/menor que 1, então o número é '0', se não, o resultado é 11 - resto;
-  -> Depois de descoberto o 'Y', é feito o mesmo tipo de soma, porém com um dígito pra frente:
-          (segundo digito * 10) + (terceiro digito * 9) + (quarto digito * 8) + ... + (décimo dígito * 2);
-  -> Repete a etapa da divisão.
+Os números nas posições 'x' são gerados aleatóriamente. Provávelmente deve ter uma lógica por trás das escolhas de certos padrões, mas eles em sí podem ser aleatórios. \
+O número 'R' varia conforme a região que foi criado. Se você nasceu no Paraná ou em Santa Catarina, seu 9° dígito será '9'. A lista das regiões está no link acima. \
+A magia acontece nos digitos Y e Z. Eles são números "verificadores", criados a partir de uma conta maluca. \
+  -> Primeiro é feito a soma: (primeiro digito * 10) + (segundo digito * 9) + (terceiro digito * 8) + ... + (nono dígito * 2); \
+  -> O resultado dessa soma é dividida por 11 e pego o resto resultante da divisão. Se for igual/menor que 1, então o número é '0', se não, o resultado é 11 - resto; \
+  -> Depois de descoberto o 'Y', é feito o mesmo tipo de soma, porém com um dígito pra frente: \
+          (segundo digito * 10) + (terceiro digito * 9) + (quarto digito * 8) + ... + (décimo dígito * 2); \
+  -> Repete a etapa da divisão. 
   
-Então no caso do CPF 123.456.789-YZ:
-  -> (1*10) + (2*9) + (3*8) + (4*7) + (5*6) + (6*5) + (7*4) + (8*3) + (9*2) = 210
-  -> 210 % 11 = 1
+Então no caso do CPF 123.456.789-YZ:\
+  -> (1*10) + (2*9) + (3*8) + (4*7) + (5*6) + (6*5) + (7*4) + (8*3) + (9*2) = 210 \
+  -> 210 % 11 = 1 \
   -> Y = 0
 
-  -> (2*10) + (3*9) + (4*8) + (5*7) + (6*6) + (7*5) + (8*4) + (9*3) + (0*2) = 244
-  -> 244 % 11 = 2
-  -> Z = 11 - resto = 11 - 2 = 9
+  -> (2*10) + (3*9) + (4*8) + (5*7) + (6*6) + (7*5) + (8*4) + (9*3) + (0*2) = 244 \
+  -> 244 % 11 = 2 \
+  -> Z = 11 - resto = 11 - 2 = 9 \
 
 Resultado: 123.456.789-09
 
